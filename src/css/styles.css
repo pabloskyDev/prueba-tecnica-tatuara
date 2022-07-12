@@ -1,0 +1,75 @@
+@import url("../fonts/Amelaryas.otf");
+
+*,
+*::before,
+*::after {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Amelaryas', sans-serif;
+}
+
+.header .navbar {
+    background-color: transparent !important;
+}
+
+.bg-img {
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: relative;
+}
+
+.img1 { background-image: url('../img/bg/bg-1-home.jpg'); }
+.img2 { background-image: url('../img/bg/bg-2-portafolio.jpg'); }
+
+.bg-color {
+    background-color: #01e2e8;
+}
+
+.bg-service {
+    height: 80%;
+    position: relative;
+}
+
+.bg-brands, .bg-contact {
+    height: 50%;
+}
+
+.about-pop { 
+    /* background-color: rgba(0,0,0, 0.4);  */
+    background-color: #f1f1f1;
+    color: #000000;
+    border: 10px solid #f1f1f1;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    height: 25%;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+}
+
+.logo-about {
+    width: 30%;
+}
+.info-about {
+    width: 70%;
+    font-size: 12px;
+}
+
+footer {
+    height: 50%;
+    background-color: #ffffff;
+    bottom: 0px;
+}
+
