@@ -1,5 +1,10 @@
 <?php
     include '../funciones.php';
+    csrf();
+
+    if (isset($_POST['submit']) && !hash_equals($_SESSION['csrf'], $_POST['csrf'])) {
+        die();
+    }
 
     if (isset($_POST['submit'])) {
         
@@ -57,6 +62,7 @@
             <h2 class="mt-4">Crea un usuario</h2>
             <hr>
             <form method="post">
+                <input name="csrf" type="hidden" value="<?php echo escapar($_SESSION['csrf']); ?>">
                 <div class="form-group p-1">
                     <label for="documento">Documento</label>
                     <input type="text" name="documento" id="documento" class="form-control">

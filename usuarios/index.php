@@ -1,5 +1,10 @@
 <?php
     include '../funciones.php';
+    csrf();
+
+    if (isset($_POST['submit']) && !hash_equals($_SESSION['csrf'], $_POST['csrf'])) {
+        die();
+    }
 
     $error = false;
     $config = include '../config.php';
@@ -8,8 +13,8 @@
         $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
         $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
 
-        if (isset($_POST['apellidos'])) {
-            $consultaSQL = "SELECT * FROM usuarios WHERE apellidos LIKE '%" . $_POST['apellidos'] . "%'";
+        if (isset($_POST['filtro'])) {
+            $consultaSQL = "SELECT * FROM usuarios WHERE CONCAT(nombre, ' ' ,apellidos) LIKE '%" . $_POST['filtro'] . "%'";
         } else {
             $consultaSQL = "SELECT * FROM usuarios";
         }
@@ -23,7 +28,7 @@
         $error = $error->getMessage();
     }
 
-    $titulo = isset($_POST['apellidos']) ? 'Lista de usuarios (' . $_POST['apellidos'] . ')' : 'Lista de usuarios';
+    $titulo = isset($_POST['filtro']) ? 'Lista de usuarios (' . $_POST['filtro'] . ')' : 'Lista de usuarios';
 ?>
 
 <?php include "../templates/header.php"; ?>
@@ -50,8 +55,9 @@
             <a href="crear.php" class="btn btn-primary mt-4">Crear usuario</a>
             <hr>
             <form method="post" class="form-inline">
+                <input name="csrf" type="hidden" value="<?php echo escapar($_SESSION['csrf']); ?>">
                 <div class="form-group mr-3">
-                    <input type="text" id="apellidos" name="apellidos" placeholder="Buscar por apellido" class="form-control">
+                    <input type="text" id="filtro" name="filtro" placeholder="Buscar por apellido" class="form-control">
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary mt-1">Ver resultados</button>
             </form>
