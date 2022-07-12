@@ -11,6 +11,7 @@
 body, html {
     height: 100%;
     font-family: 'Amelaryas', sans-serif;
+    background-color: #01e2e8;
 }
 
 .header .navbar {
@@ -26,8 +27,7 @@ body, html {
     position: relative;
 }
 
-.img1 { background-image: url('../img/bg/bg-1-home.jpg'); }
-.img2 { background-image: url('../img/bg/bg-2-portafolio.jpg'); }
+.main-img { background-image: url('../img/bg/bg-1-home.jpg'); }
 
 .bg-color {
     background-color: #01e2e8;
