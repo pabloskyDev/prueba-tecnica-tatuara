@@ -18,7 +18,7 @@
         $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
             
         $id = $_GET['id'];
-        $consultaSQL = "DELETE FROM usuarios WHERE documento =" . $id;
+        $consultaSQL = "DELETE FROM usuarios WHERE id =" . $id;
 
         $sentencia = $conexion->prepare($consultaSQL);
         $sentencia->execute();

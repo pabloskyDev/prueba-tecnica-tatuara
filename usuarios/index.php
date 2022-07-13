@@ -90,8 +90,8 @@
                             <td><?php echo escapar($fila["apellidos"]); ?></td>
                             <td><?php echo escapar($fila["email"]); ?></td>
                             <td>
-                                <a href="<?= 'borrar.php?id=' . escapar($fila["documento"]) ?>">🗑️Borrar</a>
-                                <a href="<?= 'editar.php?id=' . escapar($fila["documento"]) ?>">✏️Editar</a>
+                                <a href="<?= 'borrar.php?id=' . escapar($fila["id"]) ?>">🗑️Borrar</a>
+                                <a href="<?= 'editar.php?id=' . escapar($fila["id"]) ?>">✏️Editar</a>
                             </td>
                         </tr>
                         <?php

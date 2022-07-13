@@ -24,18 +24,20 @@
             $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
             
             $usuario = [
-                "documento" => $_GET['id'],
+                "id"=> $_GET['id'],
+                "documento" => $_POST['documento'],
                 "nombre"    => $_POST['nombre'],
                 "apellidos"  => $_POST['apellidos'],
                 "email"     => $_POST['email']
             ];
               
             $consultaSQL = "UPDATE usuarios SET
+                documento = :documento,
                 nombre = :nombre,
                 apellidos = :apellidos,
                 email = :email,
                 f_actualizacion = NOW()
-                WHERE documento = :documento";
+                WHERE id = :id";
                 
             $consulta = $conexion->prepare($consultaSQL);
             $consulta->execute($usuario);
@@ -51,7 +53,7 @@
         $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
             
         $id = $_GET['id'];
-        $consultaSQL = "SELECT * FROM usuarios WHERE documento =" . $id;
+        $consultaSQL = "SELECT * FROM usuarios WHERE id =" . $id;
 
         $sentencia = $conexion->prepare($consultaSQL);
         $sentencia->execute();
@@ -115,7 +117,7 @@
                     <input name="csrf" type="hidden" value="<?php echo escapar($_SESSION['csrf']); ?>">
                     <div class="form-group p-1">
                         <label for="documento">Documento</label>
-                        <input type="text" name="documento" id="documento" value="<?= escapar($usuario['documento']) ?>" class="form-control" disabled>
+                        <input type="text" name="documento" id="documento" value="<?= escapar($usuario['documento']) ?>" class="form-control">
                     </div>
                     <div class="form-group p-1">
                         <label for="nombre">Nombre</label>
