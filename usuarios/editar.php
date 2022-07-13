@@ -58,7 +58,7 @@
 
         $usuario = $sentencia->fetch(PDO::FETCH_ASSOC);
 
-    if (!$alumno) {
+    if (!$usuario) {
         $resultado['error'] = true;
         $resultado['mensaje'] = 'No se ha encontrado el usuario';
     }
