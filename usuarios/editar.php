@@ -74,7 +74,7 @@
 <?php include "../templates/header.php"; ?>
 
 <?php
-    if (!$resultado['error']) {
+    if ($resultado['error']) {
 ?>
     <div class="container mt-2">
         <div class="row">
@@ -90,7 +90,7 @@
 ?>
 
 <?php
-    if (isset($_POST['submit']) && $resultado['error']) {
+    if (isset($_POST['submit']) && !$resultado['error']) {
 ?>
     <div class="container mt-2">
         <div class="row">
