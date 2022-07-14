@@ -7,7 +7,7 @@
     $dbConn =  connect($db);
 
     // var_dump($_GET);
-    var_dump($_POST);
+    // var_dump($_POST);
     // var_dump($_DELETE);
     // var_dump($_PUT);
 
@@ -73,6 +73,8 @@
         $deleted = $statement->rowCount();
         if($deleted > 0){
             header("HTTP/1.1 200 OK");
+            echo json_encode('eliminado exitosamente');
+            exit();
         }else {
             header("HTTP/1.1 404 Not found");
         }
@@ -97,6 +99,8 @@
         $updated = $statement->rowCount();
         if($updated > 0){
             header("HTTP/1.1 200 OK");
+            echo json_encode('actualizado exitosamente');
+            exit();
         }else {
             header("HTTP/1.1 404 Not found");
         }
