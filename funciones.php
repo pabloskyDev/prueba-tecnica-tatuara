@@ -17,7 +17,7 @@ function csrf() {
     }
 }
 
-// Funciones creadas para crear una API con todos sus métodos
+// Funciones para crear una API con todos sus métodos
 
 //Abrir conexion a la base de datos
 function connect($db)
@@ -27,8 +27,7 @@ function connect($db)
             "mysql:host={$db['host']};
             dbname={$db['name']};
             charset=utf8", $db['user'], $db['pass']);
-        // $conn = new PDO("mysql:host=localhost;dbname=tuatara_test", "root", "root");
-        // error_log(print_r($db, true));
+        // $conn = new PDO("mysql:host=localhost;dbname=tuatara_test", "root", "");
 
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -9,7 +9,7 @@ function consultar(){
 }
 
 function agregar(){
-  var form = document.querySelector('form');
+  var form = document.querySelector('#frm_registrar');
   var dataForm = new FormData(form);
 
   EnviarPeticion('POST', dataForm, 'Agregado');
@@ -17,20 +17,20 @@ function agregar(){
 
 function modificar(id, tipo){
   if(tipo == 1){
-    var formData = new FormData();
-    formData.append("id", id);
-    // var paramId = {id: id};
-    // console.log(paramId);
-
     url += '?id='+id;
     EnviarPeticion('GET', '', 'cargarModificar');
 
   }else if(tipo == 2){
-    console.log('Funcionó!!!');
-    console.log(id);
+    var form = document.querySelector('#frm_modificar');
+    var formData = new FormData(form);
 
-    /*EnviarPeticion('PUT', formData, 'Modificado');*/
+    /*documento = document.getElementById('docActualizar').value;
+    nombre = document.getElementById('nomActualizar').value;
+    apellidos = document.getElementById('apeActualizar').value;
+    email = document.getElementById('emailActualizar').value;*/
 
+    // url += '?id='+id+'&documento='+documento+'&nombre='+nombre+'&apellidos='+apellidos+'&email='+email;
+    EnviarPeticion('PUT', formData, 'Modificado');
   }
   
 }
@@ -47,7 +47,7 @@ function eliminar(id){
   
 }
 
-function EnviarPeticion(method, params, decidir){
+function EnviarPeticion(method, datos, decidir){
   var ajax = new XMLHttpRequest();
 
   ajax.onload = function(){
@@ -58,7 +58,7 @@ function EnviarPeticion(method, params, decidir){
     console.log('Tenemos un error, ', error);
   };
   ajax.open(method, url, true);
-  ajax.send(params);
+  ajax.send(datos);
 
 }
 
@@ -96,13 +96,14 @@ function DecidirAccion(data, decidir) {
   if(decidir == 'cargarModificar'){
     // console.log('Cargar datos modificar');
     url = 'usuarios.php';
+    var frm_modificar = document.getElementById("frm_modificar").value;
     console.log(data);
-    console.log(data.documento);
-    console.log(data.nombre);
-    console.log(data.apellidos);
-    console.log(data.email);
 
-    // document.getElementById('documento').innerHTML(`...`);
+    document.getElementById('id').value= `${data.id}`;
+    document.getElementById('docActualizar').value= `${data.documento}`;
+    document.getElementById('nomActualizar').value= `${data.nombre}`;
+    document.getElementById('apeActualizar').value= `${data.apellidos}`;
+    document.getElementById('emailActualizar').value= `${data.email}`;
 
     document.getElementById('btn_modificar').addEventListener('click', function () {
       modificar(data.id, 2);
@@ -110,9 +111,11 @@ function DecidirAccion(data, decidir) {
   }
 
   if(decidir == 'Modificado'){
-    // console.log('Cargar datos modificar');
-    // url = 'usuarios.php';
-    // console.log(data);
+    url = 'usuarios.php';
+    console.log(data);
+
+    $("#modificarUsuario").modal('hide');
+    CerrarPopup();
   }
 
   if(decidir == 'Eliminado'){

@@ -73,7 +73,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success" id="btn_guardar" onclick="agregar();">Agregar</button>
+                <button type="button" class="btn btn-success" id="btn_guardar" onclick="agregar();">Guardar</button>
             </div>
             </div>
         </div>
@@ -88,23 +88,23 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="frm_registrar" method="post">
+                <form id="frm_modificar" method="put">
                     <input type="hidden" name="id" id="id">
                     <div class="mb-3">
-                        <label for="documento" class="form-label">Documento</label>
-                        <input type="text" class="form-control" name="documento" id="documento">
+                        <label for="docActualizar" class="form-label">Documento</label>
+                        <input type="text" class="form-control" name="docActualizar" id="docActualizar">
                     </div>
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" name="nombre" id="nombre">
+                        <label for="nomActualizar" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" name="nomActualizar" id="nomActualizar">
                     </div>
                     <div class="mb-3">
-                        <label for="apellidos" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" name="apellidos" id="apellidos">
+                        <label for="apeActualizar" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" name="apeActualizar" id="apeActualizar">
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
+                        <label for="emailActualizar" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="emailActualizar" id="emailActualizar" aria-describedby="emailHelp">
                     </div>
                 </form>
             </div>

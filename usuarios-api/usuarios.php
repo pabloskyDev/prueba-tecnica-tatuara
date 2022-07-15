@@ -5,17 +5,10 @@
     $config = include '../config.php';
     $db = $config['db'];
     $dbConn =  connect($db);
-
-    // var_dump($_GET);
-    // var_dump($_POST);
-    // var_dump($_DELETE);
-    // var_dump($_PUT);
-
-    // echo $_SERVER['REQUEST_METHOD'];
-
+    
     // listar todos los usuarios o solo uno.
     if ($_SERVER['REQUEST_METHOD'] == 'GET')
-    {       
+    {
         if (isset($_GET['id']))
         {
             //Mostrar un usuario
@@ -84,7 +77,7 @@
     //Actualizar
     if ($_SERVER['REQUEST_METHOD'] == 'PUT')
     {
-        $input = $_GET;
+        $input = $_POST;
         $usuarioId = $input['id'];
         $fields = getParams($input);
         $sql = "
